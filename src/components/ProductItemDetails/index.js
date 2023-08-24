@@ -28,6 +28,7 @@ class ProductItemDetails extends Component {
   componentDidMount() {
     this.getProductData()
   }
+
   getFormattedData = data => ({
     availability: data.availability,
     brand: data.brand,
@@ -132,59 +133,61 @@ class ProductItemDetails extends Component {
             <h1 className="product-name">{title}</h1>
             <p className="price-details">Rs {price}</p>
             <div className="rating-and-reviews-count">
-              <p className="rating">{rating}</p>
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-                alt="star"
-                className="star"
-              />
-            </div>
-            <p className="reviews-count">{totalReviews} Reviews</p>
-          </div>
-          <p className="product-description">{description}</p>
-          <div className="label-value-container">
-            <p className="label">Available</p>
-            <p className="value">{availability}</p>
-          </div>
-          <div className="label-value-container">
-            <p className="label">Brand</p>
-            <p className="value">{brand}</p>
-          </div>
-          <hr className="horizontal-line" />
-          <div className="quantity-container">
-            <button
-              type="button"
-              className="quantity-controller-button"
-              onClick={this.onDecrementQuantity}
-              data-test-id="minus"
-            >
-              <BsDashSquare className="quantity-container-icon" />
-            </button>
-            <p className="quantity">{quantity}</p>
-            <button
-              type="button"
-              className="quantity-controller-button"
-              onClick={this.onIncrementQuantity}
-              data-test-id="plus"
-            >
-              <BsPlusSquare className="quantity-container-icon" />
-            </button>
-          </div>
-          <button type="button" className="button add-to-card-btn">
-            ADD TO CART
-          </button>
-        </div>
-      </div>
-      <h1 className="similar-products-heading">Similar Products<h1/>
-        <ul className="similar-products-list">
-            {similarProductsData.map(eachSimilarProduct=>(
-                <SimilarProductItem 
-                  productDetails={eachSimilarProduct}
-                  key={eachSimilarProduct.id}
+              <div className="rating-container">
+                <p className="rating">{rating}</p>
+                <img
+                  src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+                  alt="star"
+                  className="star"
                 />
-            ))}
+              </div>
+              <p className="reviews-count">{totalReviews} Reviews</p>
+            </div>
+            <p className="product-description">{description}</p>
+            <div className="label-value-container">
+              <p className="label">Available</p>
+              <p className="value">{availability}</p>
+            </div>
+            <div className="label-value-container">
+              <p className="label">Brand</p>
+              <p className="value">{brand}</p>
+            </div>
+            <hr className="horizontal-line" />
+            <div className="quantity-container">
+              <button
+                type="button"
+                className="quantity-controller-button"
+                onClick={this.onDecrementQuantity}
+                data-test-id="minus"
+              >
+                <BsDashSquare className="quantity-container-icon" />
+              </button>
+              <p className="quantity">{quantity}</p>
+              <button
+                type="button"
+                className="quantity-controller-button"
+                onClick={this.onIncrementQuantity}
+                data-test-id="plus"
+              >
+                <BsPlusSquare className="quantity-container-icon" />
+              </button>
+            </div>
+            <button type="button" className="button add-to-card-btn">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+        <h1 className="similar-products-heading">Similar Products</h1>
+        <ul className="similar-products-list">
+          {similarProductsData.map(eachSimilarProduct => (
+            <SimilarProductItem
+              productDetails={eachSimilarProduct}
+              key={eachSimilarProduct.id}
+            />
+          ))}
         </ul>
-       )
+      </div>
+    )
   }
 
   renderProductDetails = () => {
